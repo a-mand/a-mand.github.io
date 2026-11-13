@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amanda Lopes</title>
+<meta name="description" content="Portfólio de Amanda Lopes: pesquisa em Aprendizado Federado para redes veiculares, desenvolvimento back-end e projetos de Machine Learning.">
+<meta name="theme-color" content="#1b1030">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --base: #1b1030;
+    --surface: #251744;
+    --line: #3d2d68;
+    --text: #ede7f6;
+    --muted: #b9acd8;
+    --mint: #a8e6cf;
+    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body: "Newsreader", Georgia, "Times New Roman", serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--base);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 1.1875rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--mint); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; border-radius: 2px; }
+  .wrap { width: min(1080px, 100% - 3rem); margin-inline: auto; }
+
+  /* Navegação */
+  header.top {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(27, 16, 48, .92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  header.top .wrap { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; align-items: center; padding-block: .85rem; }
+  header.top .brand { font-family: var(--display); font-weight: 700; color: var(--text); text-decoration: none; margin-right: auto; font-size: 1.05rem; }
+  header.top nav { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; font-family: var(--display); font-size: .95rem; font-weight: 500; }
+  header.top nav a { color: var(--muted); text-decoration: none; }
+  header.top nav a:hover { color: var(--mint); }
+
+  /* Hero */
+  .hero { padding-block: clamp(2.5rem, 7vw, 5.5rem); }
+  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(1.5rem, 5vw, 4rem); align-items: center; }
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(3rem, 8.5vw, 6.25rem);
+    line-height: .95;
+    letter-spacing: -.035em;
+    margin: 0 0 1.5rem;
+  }
+  .hero h1 .sprite { height: .62em; vertical-align: baseline; margin-left: .15em; }
+  .hero p.lead { font-size: clamp(1.25rem, 2.2vw, 1.5rem); line-height: 1.5; max-width: 30ch; margin: 0 0 1.75rem; color: var(--text); }
+  .hero .links { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; font-family: var(--display); font-weight: 500; }
+
+  /* Seções */
+  section.block { border-top: 1px solid var(--line); padding-block: clamp(2.25rem, 5vw, 3.75rem); }
+  section.block .wrap { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 1.5rem clamp(1rem, 2.5vw, 2rem); }
+  section.block h2 { font-family: var(--display); font-weight: 700; font-size: 1.35rem; letter-spacing: -.01em; margin: 0; line-height: 1.2; }
+  .content > :first-child { margin-top: 0; }
+  .content > :last-child { margin-bottom: 0; }
+  .content p { max-width: 62ch; margin: 0 0 1rem; }
+  .content h3 { font-family: var(--display); font-size: 1.05rem; font-weight: 700; margin: 1.75rem 0 .5rem; }
+  .muted { color: var(--muted); }
+
+  /* Listas em linhas (projetos, cursos, publicações) */
+  .rows { list-style: none; margin: 0; padding: 0; }
+  .rows > li { padding-block: 1.1rem; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 14rem) minmax(0, 1fr); gap: .35rem 2rem; }
+  .rows > li:first-child { padding-top: 0; }
+  .rows > li:last-child { border-bottom: 0; padding-bottom: 0; }
+  .rows .name { font-family: var(--display); font-weight: 700; font-size: 1.1rem; line-height: 1.3; }
+  .rows .name a { color: var(--text); text-decoration-color: var(--mint); }
+  .rows .desc { margin: 0; max-width: 60ch; }
+  .rows .stack { display: block; margin-top: .35rem; font-size: .98rem; color: var(--muted); font-style: italic; }
+  .rows.single > li { grid-template-columns: 1fr; }
+
+  /* Tecnologias */
+  dl.tech { margin: 0; display: grid; grid-template-columns: minmax(0, 14rem) minmax(0, 1fr); gap: .75rem 2rem; }
+  dl.tech dt { font-family: var(--display); font-weight: 700; font-size: 1.05rem; }
+  dl.tech dd { margin: 0; }
+
+  ul.plain { margin: 0; padding-left: 1.1rem; max-width: 62ch; }
+  ul.plain li { margin-bottom: .4rem; }
+  ul.plain li::marker { color: var(--mint); }
+
+  footer.end { border-top: 1px solid var(--line); padding-block: 2rem; color: var(--muted); font-size: .95rem; }
+
+
+  [data-slot] { margin: 0; }
+  [data-slot] img { display: block; max-width: 80%; height: auto; }
+  [data-slot].missing img { display: none; }
+  [data-slot].missing { display: none; }
+  html.guia [data-slot].missing {
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    border: 2px dashed var(--line); border-radius: 6px; color: var(--muted);
+    font-family: var(--display); font-size: .85rem; padding: .75rem; background: rgba(61,45,104,.25);
+  }
+  html.guia [data-slot].missing::before { content: attr(data-label); }
+
+  .photo { float: right; position: relative; width: 210px; margin: 0 14px 24px 2.25rem; }
+  .photo::before { content: ""; position: absolute; inset: 0; transform: translate(12px, 12px); border: 2px solid var(--mint); border-radius: 8px; }
+  .photo img { position: relative; width: 210px; aspect-ratio: 4 / 5; object-fit: cover; padding: 6px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+  html.guia .photo.missing::before { position: static; transform: none; border: 0; inset: auto; }
+  html.guia .photo.missing { width: 210px; aspect-ratio: 4 / 5; }
+
+
+  .photo-wrap { position: relative; width: min(340px, 100%); margin-left: auto; }
+  .hero-photo { float: none; width: calc(100% - 14px); margin: 0 14px 14px 0; }
+  .hero-photo img { width: 100%; }
+  html.guia .hero-photo.missing { width: calc(100% - 14px); }
+  .deco-hero { position: absolute; left: -44px; bottom: -4px; width: 96px; pointer-events: none; }
+  html.guia .deco-hero.missing { width: 96px; height: 96px; pointer-events: none; }
+
+  .deco-side { float: right; width: 150px; margin: 0 0 1rem 2rem; }
+  html.guia .deco-side.missing { width: 150px; height: 150px; }
+
+  footer.end { position: relative; }
+  .deco-foot { position: absolute; right: max(1.5rem, calc((100% - 1080px) / 2)); bottom: 100%; width: 96px; pointer-events: none; }
+  html.guia .deco-foot.missing { width: 96px; height: 80px; pointer-events: none; }
+
+  @media (max-width: 820px) {
+    .photo-wrap { margin-left: 0; width: min(300px, calc(100% - 20px)); }
+    .deco-hero { left: auto; right: -8px; }
+    .hero .wrap { grid-template-columns: 1fr; }
+    section.block .wrap { grid-template-columns: 1fr; }
+    .rows > li, dl.tech { grid-template-columns: 1fr; gap: .25rem; }
+    dl.tech dd { margin-bottom: .75rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#topo">Amanda Lopes</a>
+    <nav aria-label="Seções">
+      <a href="#sobre">Sobre</a>
+      <a href="#pesquisa">Pesquisa</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#tecnologias">Tecnologias</a>
+      <a href="#publicacoes">Publicações</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main id="topo">
+  <section class="hero" aria-labelledby="nome">
+    <div class="wrap">
+      <div>
+        <h1 id="nome">Amanda Lopes<img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/196.gif" alt="Espeon animado" onerror="this.remove()"></h1>
+        <p class="lead">Pesquisa Aprendizado Federado em redes veiculares e desenvolve <span style="white-space:nowrap">back-end</span>.</p>
+        <div class="links">
+          <a href="https://github.com/a-mand">GitHub</a>
+          <a href="https://www.linkedin.com/in/amanda-lopes-6b0389241/">LinkedIn</a>
+          <a href="http://lattes.cnpq.br/7039397366804214">Lattes</a>
+        </div>
+      </div>
+      <div class="photo-wrap">
+        <figure class="photo hero-photo" data-slot data-base="foto" data-exts="jpg,jpeg,png,webp" data-label="Sua foto (foto.jpg)"><img alt="Foto de Amanda Lopes"></figure>
+        <figure class="deco-hero" data-slot data-base="espeon-1" data-exts="png,gif,webp" data-label="espeon-1" aria-hidden="true"><img alt=""></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="sobre" aria-labelledby="h-sobre">
+    <div class="wrap">
+      <h2 id="h-sobre">Sobre</h2>
+      <div class="content">
+        <p>Estudante de Engenharia de Telecomunicações na Universidade Federal do Pará (UFPA), no 9º período (2022 a 2027).</p>
+        <p>Une a base em redes e comunicação de dados à programação: pesquisa em Inteligência Artificial e Aprendizado Federado, tem experiência em desenvolvimento Full Stack e hoje se dedica ao back-end, com interesse em soluções escaláveis, seguras e orientadas por dados.</p>
+        <p>Planeja cursar mestrado em Engenharia, dando continuidade à pesquisa.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="pesquisa" aria-labelledby="h-pesquisa">
+    <div class="wrap">
+      <h2 id="h-pesquisa">Pesquisa</h2>
+      <div class="content">
+        <figure class="deco-side" data-slot data-base="espeon-2" data-exts="png,gif,webp" data-label="espeon-2" aria-hidden="true"><img alt=""></figure>
+        <p>Pesquisadora no Laboratório de Cidades Inteligentes e Sustentáveis (LaCIS) da UFPA, como bolsista do CNPq. O laboratório estuda tecnologias para cidades mais conectadas, eficientes e sustentáveis.</p>
+        <p>A pesquisa se concentra em Aprendizado Federado aplicado a redes veiculares: os veículos treinam um modelo em conjunto, sem compartilhar seus dados brutos, o que preserva a privacidade e reduz o tráfego na rede.</p>
+        <h3>Principal desafio estudado</h3>
+        <p>As redes veiculares têm mobilidade alta, conexões instáveis e dispositivos com recursos limitados. A pesquisa trata de decidir quais veículos devem participar de cada rodada de treinamento, para que o modelo convirja com mais rapidez e qualidade.</p>
+        <h3>Temas de interesse</h3>
+        <p class="muted">Aprendizado Federado, seleção de clientes, redes veiculares (VANETs), sistemas distribuídos, segurança de modelos de Machine Learning e Machine Learning para cidades inteligentes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="projetos" aria-labelledby="h-projetos">
+    <div class="wrap">
+      <h2 id="h-projetos">Projetos</h2>
+      <div class="content">
+        <ul class="rows">
+          <li>
+            <span class="name">zetta</span>
+            <p class="desc">Protótipo de app para gestão de frotas que monitora o comportamento de motoristas para reduzir acidentes por fadiga, distração e condução agressiva. 2º lugar no Hackathon Desafio Indústria 4.0 (Hydro e UFPA, 2024).
+              <span class="stack">React Native, Expo, MySQL, MediaPipe FaceMesh, OpenCV, SciPy</span></p>
+          </li>
+          <li>
+            <span class="name"><a href="https://github.com/a-mand/projeto_IC">projeto_IC</a></span>
+            <p class="desc">Detecção de objetos com resposta por voz.
+              <span class="stack">YOLOv8, Roboflow, pyttsx3</span></p>
+          </li>
+          <li>
+            <span class="name"><a href="https://github.com/a-mand/IC">IC</a></span>
+            <p class="desc">Classificação de melanoma no dataset ISIC 2018, com balanceamento de classes e ajuste de hiperparâmetros.
+              <span class="stack">scikit-learn, Random Forest, SVM, SMOTE, GridSearchCV</span></p>
+          </li>
+          <li>
+            <span class="name"><a href="https://github.com/a-mand/algoritmoGenetico">algoritmoGenetico</a></span>
+            <p class="desc">Otimização da função F6 com algoritmo genético.
+              <span class="stack">Python</span></p>
+          </li>
+          <li>
+            <span class="name"><a href="https://github.com/a-mand/form_e_carrossel">form_e_carrossel</a></span>
+            <p class="desc">Formulário e carrossel de interface.
+              <span class="stack">React</span></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="tecnologias" aria-labelledby="h-tec">
+    <div class="wrap">
+      <h2 id="h-tec">Tecnologias</h2>
+      <div class="content">
+        <dl class="tech">
+          <dt>Linguagens</dt><dd>Python, PHP, JavaScript, C, HTML, CSS</dd>
+          <dt>Back-end e dados</dt><dd>Laravel, Node.js, MySQL, Oracle</dd>
+          <dt>IA e ciência de dados</dt><dd>PyTorch, scikit-learn, OpenCV, SciPy, YOLOv8</dd>
+          <dt>Front-end e ferramentas</dt><dd>React, React Native, Git, GitHub, Linux, Scrum, AWS (fundamentos)</dd>
+        </dl>
+        <h3>Em estudo</h3>
+        <ul class="plain">
+          <li>Pesquisa em Aprendizado Federado para redes veiculares (LaCIS/UFPA)</li>
+          <li>Projeto e modelagem de bancos de dados relacionais</li>
+          <li>Construção e documentação de APIs REST</li>
+          <li>Arquitetura de aplicações, boas práticas e testes</li>
+          <li>Autenticação, segurança e desempenho</li>
+          <li>Sistemas distribuídos, base para a pesquisa em Aprendizado Federado</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="cursos" aria-labelledby="h-cursos">
+    <div class="wrap">
+      <h2 id="h-cursos">Cursos e certificações</h2>
+      <div class="content">
+        <ul class="rows">
+          <li><span class="name">Ciência da Computação de Harvard no Brasil</span><p class="desc">Fundação Estudar, 70 h, 2025.</p></li>
+          <li><span class="name">Desvendando o Open RAN</span><p class="desc">CPQD, TIP Academy, 18 h, 2025.</p></li>
+          <li><span class="name">AWS Academy Cloud Foundations</span><p class="desc">AWS Academy, 20 h, 2025.</p></li>
+          <li><span class="name">Programador Full-Stack</span><p class="desc">SENAI, 1.492 h, 2022 a 2023.</p></li>
+          <li><span class="name">Computação Quântica</span><p class="desc">Minicurso, Fundação Guamá, 12 h.</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="idiomas" aria-labelledby="h-idiomas">
+    <div class="wrap">
+      <h2 id="h-idiomas">Idiomas</h2>
+      <div class="content">
+        <dl class="tech">
+          <dt>Português</dt><dd>Nativo</dd>
+          <dt>Inglês</dt><dd>B2</dd>
+          <dt>Francês</dt><dd>Básico (A2)</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="publicacoes" aria-labelledby="h-pub">
+    <div class="wrap">
+      <h2 id="h-pub">Publicações</h2>
+      <div class="content">
+        <figure class="deco-side" data-slot data-base="espeon-3" data-exts="png,gif,webp" data-label="espeon-3" aria-hidden="true"><img alt=""></figure>
+        <ul class="rows single">
+          <li>
+            <p class="desc"><span class="name"><a href="https://github.com/Twinte/PRINCE---Proactive">PRINCE: A Proactive Client Selection in Federated Learning for Connected and Autonomous Vehicles</a></span>
+              <span class="stack">Anais do XLIV SBRC, 2026. Primeira autora.</span></p>
+          </li>
+          <li>
+            <p class="desc"><span class="name">Defendendo Modelos de Aprendizado de Máquina: Estratégias de Detecção de Anomalias Contra Ataques de Envenenamento</span>
+              <span class="stack">Anais da XVIII Escola Regional de Informática Norte 2 (ERIN 2), 2025. Coautoria.</span></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contato" aria-labelledby="h-contato">
+    <div class="wrap">
+      <h2 id="h-contato">Contato</h2>
+      <div class="content">
+        <dl class="tech">
+          <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/amanda-lopes-6b0389241/">linkedin.com/in/amanda-lopes-6b0389241</a></dd>
+          <dt>GitHub</dt><dd><a href="https://github.com/a-mand">github.com/a-mand</a></dd>
+          <dt>Lattes</dt><dd><a href="http://lattes.cnpq.br/7039397366804214">lattes.cnpq.br/7039397366804214</a></dd>
+          <dt>ORCID</dt><dd><a href="https://orcid.org/0009-0005-3263-4395">0009-0005-3263-4395</a></dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="end">
+  <figure class="deco-foot" data-slot data-base="espeon-4" data-exts="png,gif,webp" data-label="espeon-4" aria-hidden="true"><img alt=""></figure>
+  <div class="wrap">Amanda Lopes. Engenharia de Telecomunicações, UFPA.</div>
+</footer>
+
+
+<script>
+(function () {
+  if (/[?&]guia\b/.test(location.search)) document.documentElement.classList.add('guia');
+  document.querySelectorAll('[data-slot]').forEach(function (slot) {
+    var img = slot.querySelector('img');
+    var base = slot.getAttribute('data-base');
+    var exts = (slot.getAttribute('data-exts') || 'png').split(',');
+    var i = 0;
+    function next() {
+      if (i >= exts.length) { slot.classList.add('missing'); return; }
+      img.src = base + '.' + exts[i++];
+    }
+    img.addEventListener('error', next);
+    next();
+  });
+})();
+</script>
+
+</body>
+</html>
